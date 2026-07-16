@@ -125,7 +125,7 @@ The RNNDecisionStep maintains a recurrent state $s_t \in \mathbb{R}^d$ that enco
 
 **Action embedding**: maps discrete actions to a continuous space:
 
-$$e_{t-1} = W_{\text{embed}} \cdot \text{one\_hot}(a_{t-1})$$
+$$e_{t-1} = W_{\text{embed}} \cdot \text{one-hot}(a_{t-1})$$
 
 where $W_{\text{embed}} \in \mathbb{R}^{m \times A}$ and $m$ is the action embedding dimension (markov_rank in config).
 
@@ -185,11 +185,11 @@ During training, strategy and action use cross-entropy loss; value uses MSE. Dur
 
 WorldModelStep is a lightweight one-step RSSM (Recurrent State Space Model) for counterfactual reasoning.
 
-**Inputs**: current state $s_t$, one-hot encoding of the chosen action $\text{one\_hot}(a_t)$
+**Inputs**: current state $s_t$, one-hot encoding of the chosen action $\text{one-hot}(a_t)$
 
 **Forward pass**:
 
-$$x_t = [s_t; \text{one\_hot}(a_t)]$$
+$$x_t = [s_t; \text{one-hot}(a_t)]$$
 
 $$y_t = W_{w2} \cdot \text{ReLU}(W_{w1} \cdot x_t + b_{w1}) + b_{w2}$$
 

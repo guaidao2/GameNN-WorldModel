@@ -125,7 +125,7 @@ RNNDecisionStep 维护一个递归状态 $s_t \in \mathbb{R}^d$，编码截止�
 
 **动作嵌入**：将离散动作映射到连续空间：
 
-$$e_{t-1} = W_{\text{embed}} \cdot \text{one\_hot}(a_{t-1})$$
+$$e_{t-1} = W_{\text{embed}} \cdot \text{one-hot}(a_{t-1})$$
 
 其中 $W_{\text{embed}} \in \mathbb{R}^{m \times A}$，$m$ 是动作嵌入维度（即 config 中的 markov_rank）。
 
@@ -185,11 +185,11 @@ $$v_t = W_{v2} \cdot \text{ReLU}(W_{v1} \cdot s_t + b_{v1}) + b_{v2}$$
 
 WorldModelStep 是一个轻量级的一步 RSSM（Recurrent State Space Model），用于反事实推理。
 
-**输入**：当前状态 $s_t$，选定动作的 one-hot 编码 $\text{one\_hot}(a_t)$
+**输入**：当前状态 $s_t$，选定动作的 one-hot 编码 $\text{one-hot}(a_t)$
 
 **前向传播**：
 
-$$x_t = [s_t; \text{one\_hot}(a_t)]$$
+$$x_t = [s_t; \text{one-hot}(a_t)]$$
 
 $$y_t = W_{w2} \cdot \text{ReLU}(W_{w1} \cdot x_t + b_{w1}) + b_{w2}$$
 
