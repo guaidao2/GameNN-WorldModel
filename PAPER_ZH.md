@@ -367,7 +367,7 @@ $$\mathcal{L}_{\text{MSE}}^v = \frac{1}{B} \sum_{b=1}^B (v_b - \hat{v}_b)^2 \qua
 
 $$\mathcal{L}_{\text{BCE}}^p = -\frac{1}{B} \sum_{b=1}^B [p_b \log \hat{p}_b + (1-p_b) \log(1-\hat{p}_b)] \quad \text{(后果 BCE)}$$
 
-默认权重：$\lambda_{\text{CE}}^s = 1.0$，$\lambda_{\text{CE}}^a = 1.0$，$\lambda_{\text{MSE}}^v = 1.0$，$\lambda_{\text{BCE}}^p = 0.5$。
+默认权重：$\lambda_{\mathrm{CE}}^s = 1.0$，$\lambda_{\mathrm{CE}}^a = 1.0$，$\lambda_{\mathrm{MSE}}^v = 1.0$，$\lambda_{\mathrm{BCE}}^p = 0.5$。
 
 `valid_mask` 参数允许对部分样本做掩码，适用于部分标注的训练数据。
 
