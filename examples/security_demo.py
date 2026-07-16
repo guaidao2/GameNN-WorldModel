@@ -68,7 +68,7 @@ for i in range(batch_size):
     for t in range(seq_len):
         print(f"  步 {t}: 策略={out_seq['strategy_name'][t][i]}, "
               f"动作={out_seq['action_name'][t][i]}, "
-              f"置信度={torch.sigmoid(out_seq['value'][t, i]).item():.3f}")
+              f"置信度={torch.sigmoid(out_seq['value'][i, t]).item():.3f}")
 
 # ── 演示训练损失计算 ─────────────────────────────────────────
 print("\n=== 训练损失计算演示 ===")
