@@ -375,7 +375,7 @@ $$\mathcal{L}_{\text{BCE}}^p = -\frac{1}{B} \sum_{b=1}^B [p_b \log \hat{p}_b + (
 
 在序列模式下（rollout），损失在每个时间步独立计算并求和：
 
-$$\mathcal{L}_{\text{total}} = \sum_{t=1}^T \mathcal{L}(o_t, a_t^*, v_t^*, p_t^*)$$
+$$\mathcal{L}_{\mathrm{total}} = \sum_{t=1}^T \mathcal{L}(o_t, a_{t}^*, v_{t}^*, p_{t}^*)$$
 
 这种逐步监督信号比仅在序列末尾提供奖励信号更高效，梯度信噪比更高。
 
@@ -394,10 +394,10 @@ $$\mathcal{L}_{\text{total}} = \sum_{t=1}^T \mathcal{L}(o_t, a_t^*, v_t^*, p_t^*
 
 每个训练样本应包含：
 - 观测向量 $o_t$（维度 $D$）
-- 策略标签 $g_t^* \in \{0, \dots, S-1\}$
-- 动作标签 $a_t^* \in \{0, \dots, A-1\}$
-- 价值标签 $v_t^* \in \mathbb{R}$（建议归一化到 $[0, 1]$）
-- 后果标签 $p_t^* \in [0, 1]$（可选）
+- 策略标签 $g_{t}^* \in \{0, \dots, S-1\}$
+- 动作标签 $a_{t}^* \in \{0, \dots, A-1\}$
+- 价值标签 $v_{t}^* \in \mathbb{R}$（建议归一化到 $[0, 1]$）
+- 后果标签 $p_{t}^* \in [0, 1]$（可选）
 
 ### 6.5 从 MuLun 迁移权重
 

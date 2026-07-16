@@ -373,7 +373,7 @@ The `valid_mask` parameter enables masking specific samples, useful for partiall
 
 In sequential mode (rollout), losses are computed and summed independently at each time step:
 
-$$\mathcal{L}_{\text{total}} = \sum_{t=1}^T \mathcal{L}(o_t, a_t^*, v_t^*, p_t^*)$$
+$$\mathcal{L}_{\mathrm{total}} = \sum_{t=1}^T \mathcal{L}(o_t, a_{t}^*, v_{t}^*, p_{t}^*)$$
 
 This stepwise supervision signal has higher gradient signal-to-noise ratio compared to providing a reward signal only at the end of a trajectory.
 
@@ -392,10 +392,10 @@ Recommended training setup:
 
 Each training sample should contain:
 - Observation vector $o_t$ (dimension $D$)
-- Strategy label $g_t^* \in \{0, \dots, S-1\}$
-- Action label $a_t^* \in \{0, \dots, A-1\}$
-- Value label $v_t^* \in \mathbb{R}$ (recommend normalizing to $[0, 1]$)
-- Outcome label $p_t^* \in [0, 1]$ (optional)
+- Strategy label $g_{t}^* \in \{0, \dots, S-1\}$
+- Action label $a_{t}^* \in \{0, \dots, A-1\}$
+- Value label $v_{t}^* \in \mathbb{R}$ (recommend normalizing to $[0, 1]$)
+- Outcome label $p_{t}^* \in [0, 1]$ (optional)
 
 ### 6.5 Loading MuLun Weights
 
