@@ -56,6 +56,11 @@ observation → StateEncoder → state → RNNDecisionStep → new_state
 - [PAPER_ZH.md](./PAPER_ZH.md) — 中文论文
 - [PAPER_EN.md](./PAPER_EN.md) — English paper
 - [examples/security_demo.py](./examples/security_demo.py) — 网络安全领域示例
+- [examples/train_world_model.py](./examples/train_world_model.py) — 世界模型真实目标训练脚本
+  （friend-audit 修复：predicted_state 原无监督目标——纯想象输出；现经
+  `compute_loss(target_next_state=...)` MSE 监督 + 真实转移数据训练。
+  验证：next_state loss 19.1x 下降，世界模型真实学习环境动力学）
+  运行：`python examples/train_world_model.py --steps 4000`
 
 ## 引用 (Citation)
 
