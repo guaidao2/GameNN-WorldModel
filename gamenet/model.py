@@ -215,11 +215,13 @@ class GameNNModel(nn.Module):
         target_action: Optional[torch.Tensor] = None,
         target_outcome: Optional[torch.Tensor] = None,
         target_value: Optional[torch.Tensor] = None,
+        target_next_state: Optional[torch.Tensor] = None,
         valid_mask: Optional[torch.Tensor] = None,
         strategy_weight: float = 1.0,
         action_weight: float = 1.0,
         value_weight: float = 1.0,
         outcome_weight: float = 0.5,
+        next_state_weight: float = 1.0,
     ) -> Dict[str, torch.Tensor]:
         """
         Compute supervised learning losses for the decision architecture.
@@ -279,6 +281,18 @@ class GameNNModel(nn.Module):
                 loss = F.binary_cross_entropy(pred, targets)
                 losses["outcome_loss"] = loss
                 total += outcome_weight * loss
+
+        # World model next-state prediction MSE
+        # （friend-audit 修复：predicted_state 原无监督目标——世界模型
+        #  只有 outcome_prob 可学、next-state 是纯想象。真实 (s,a)->s'
+        #  数据下此 loss 让世界模型真正学会环境转移）
+        if target_next_state is not None:
+            pred = _apply_mask(decision_out["predicted_state"], valid_mask)
+            targets = _apply_mask(target_next_state, valid_mask)
+            if targets.numel() > 0:
+                loss = F.mse_loss(pred, targets)
+                losses["next_state_loss"] = loss
+                total += next_state_weight * loss
 
         losses["loss"] = total
         return losses
